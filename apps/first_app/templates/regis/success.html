@@ -1,0 +1,88 @@
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Ajax Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://localhost:4000/socket.io/socket.io.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> </head>
+  <body>
+    <div id = "full-chat-room">
+    <div id ="open-chat-room">
+        <p>Chat</p>
+    </div>
+    <div id="chatroom">
+      <div id = "messages"></div>
+      <div id="text">
+        <fieldset id ="box">
+          {{self.user_name}}:
+              <form action="/message" method="post" id="create_message">
+                  {% csrf_token %}
+                  {% if self.admin == True %}
+                      <textarea class="input" name="message" cols="30" rows="1">admin~</textarea>
+                  {% else %}
+                      <textarea class="input" name="message" cols="30" rows="2"></textarea>
+                  {% endif %}
+                  <input type="hidden" name = "user" value ="{{self}}">
+                  <input type="submit" vlaue="Submit" >
+              </form>
+          </fieldset>
+  <script>
+      var host = 'localhost';
+      var nodejs_port = '4000';
+      var socket = io(host + ':' + nodejs_port);
+       $(document).ready(function(){
+          socket.emit('message', {reaseon: "because"});
+           console.log("document ready")
+              $.ajax({
+              url: '/load', /* Where should this go? */
+              success: function(serverResponse) { /* What code should we run when the server responds? */
+                  $('#messages').html(serverResponse)
+                  var objDiv = document.getElementById("messages");
+                  objDiv.scrollTop = objDiv.scrollHeight;
+              }
+              })
+          }); 
+          // when the document is ready, scrolls down the page to the last page if there are messages
+          // on the form submit
+          $('#create_message').submit(function(e){
+              e.preventDefault()
+              $.ajax({
+                  url: $(this).attr('action'), /* Where should this go? */
+                  method: 'post', /* Which HTTP verb? */
+                  data: $(this).serialize(), /* Any data to send along? */
+                  success: function(serverResponse) { /* What code should we run when the server responds? */
+                      $('#messages').html(serverResponse)
+                      var objDiv = document.getElementById("messages");
+                      objDiv.scrollTop = objDiv.scrollHeight;
+                      $("#create_message")[0].reset()
+                      socket.emit('message', {reaseon: "because"});
+                  }
+              })
+          });
+          // receives the message object from the server
+          socket.on('working', function(data) {
+              $.ajax({
+                  url: '/load', /* Where should this go? */
+                  success: function(serverResponse) { /* What code should we run when the server responds? */
+                      $('#messages').html(serverResponse)
+                      var objDiv = document.getElementById("messages");
+                      objDiv.scrollTop = objDiv.scrollHeight;
+                  }
+              })
+          });
+              </script>
+      </div>
+  </div>
+</div>
+
+  <script>
+  $("#open-chat-room").click(function(){
+    $("#chatroom").slideToggle('slow', function(){
+
+    });
+  })
+  </script>
+  </body>
+</html>

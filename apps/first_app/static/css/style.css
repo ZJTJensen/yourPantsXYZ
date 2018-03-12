@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#full-chat-room{
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+#chatroom{
+    display: none;
+    width: 250px;
+}
+#open-chat-room{
+    width: 250px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: rgba(106, 106, 233, 0.611);
+}
+.tips{
+    list-style: none;
+}
+#login{
+    border: 1px solid black;
+    width: 300px;
+    margin: 0px 0px 0px 20px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 10px 10px 10px;
+}
+#LandR{
+    width: 750px;
+    height: auto;
+    margin: 100px auto;
+}
+#xwrapper{
+    width: 600px;
+    height: 100%;
+    margin: 50px auto;
+    border: 1px solid black;
+}
+/* body{
+    background-image: url('../imgs/pink-dust.png');
+} */
+.input{
+    background-color: rgba(230, 230, 230, 0.426);
+}
+#wrapper{
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+}
+#search{
+    width: 430px;
+    height: auto;
+    margin: 0 auto;
+}
+#placeholder2{
+    width: 450px;
+    height: auto;
+    margin: 0 auto;
+}
+#listofban{
+    width: 430px;
+    height: auto;
+    margin: 0 auto;
+}
+.onclick-menu {
+    position: relative;
+}
+.onclick-menu:focus .onclick-menu-content {
+    /* content is visible if menu is 'opened' */
+    visibility: visible;
+}
+.onclick-menu-content {
+    position: absolute;
+    z-index: 1;
+    background-color: tan;
+    /* disable visibility by default, delay to enable clicks */
+    visibility: hidden;
+    transition: visibility 0.5s;
+    padding: 0 0 0 0px;
+    border: 2px solid black;
+    margin: 0 0 0 10px;
+}
+.remove{
+    vertical-align: left;
+    list-style: none;
+    margin: 0px 0px 0px 0px;
+}
+.stuff{
+    margin:  10px 0 0 0;
+}
+#messages{
+    width: 100%;
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid black;
+    background-color: #7474749e;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+#error{
+    border: 1px solid black;
+    width: 695px;
+    height: auto;
+    margin: 10px 0px 0px 20px;
+    padding: 10px 10px 10px 10px;
+    
+}
+#register{
+    border: 1px solid black;
+    width: 350px;
+    vertical-align: top;
+    display: inline-block;
+    margin: 0px 0px 0px 20px;
+    padding: 10px 10px 10px 10px;
+    /* text-align: center; */
+}
+.text{
+    text-align: right;
+    margin: 0px 20px 10px 0;
+}
+
+#box{
+    width: 250px;
+}
+h1{
+    border-bottom: 1px solid black;
+}
+.button{
+    background-color: green;
+    text-align: center;
+    color: white;
+    width: 100px;
+    height: 40px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 0px 0 0 0;
+}
+.button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.button:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 10px;
+    top: 0;
+    color: black;
+    right: -5px;
+    transition: 0.5s;
+}
+.button:hover {
+    padding-right: 25px;
+}
+.button:hover:after {
+    opacity: 1;
+    right: 0px;
+}
+.move{
+    text-align: center;
+}
