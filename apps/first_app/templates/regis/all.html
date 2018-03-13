@@ -10,6 +10,10 @@
         {% if self.admin == True%}
             <p style="color: black;">{{message.user.user_name}}: {{message.message}}</p>
         {% endif %}
+    {% elif self.user_name|add:'~' in message.message %}
+        <p style="color: tan;">{{message.user.user_name}}: {{message.message}}</p>
+    {% elif message.user == self and '~' in message.message%}
+        <p style="color: rgb(194, 125, 36);">{{message.user.user_name}}: {{message.message}}</p>
     {% elif 'http://' in message.message or 'https://' in message.message %}
         <a href="{{message.message}}">{{message.user.user_name}}: {{message.message}}</a>
     {% elif message.user == None and 'unbanned' in message.message %}
@@ -20,9 +24,9 @@
         <p style="color: purple;">{{message.message}}</p>
     {% elif message.user == None and 'removed' in message.message %}
         <p style="color: purple;">{{message.message}}</p>
-    {% elif message.user == self and message.user != None %}
+    {% elif message.user == self and message.user != None and '~' in message.message == False %}
             <p style = "color: blue;">{{message.user.user_name}}: {{message.message}}</p>
-    {% elif message.user != self and message.user.user_name != None%}
+    {% elif message.user != self and message.user.user_name != None and '~' in message.message == False %}
         {% if self.admin == False %}
             <p style = "color: orange;">
                 {% if message.user.admin == True %}
@@ -30,7 +34,7 @@
                 {% endif %}
                 {{message.user.user_name}}: {{message.message}}</p>
         {% endif%}
-        {% if self.admin == True and message.user.admin != True or self.id == 1 %}
+        {% if self.admin == True and message.user.admin != True or self.id == 1 and '~' in message.message == False %}
         <div tabindex="0" class="onclick-menu"> <p style = "color: rgb(141, 95, 9);">
             {{message.user.user_name}}: {{message.message}}</p>
                 <div class="onclick-menu-content">

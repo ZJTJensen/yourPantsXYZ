@@ -7,6 +7,15 @@
     position: fixed;
     bottom: 0;
     right: 0;
+    padding: 0 10px 0 0;
+}
+#chat-word{
+    font-size: 22px;
+    font-weight: bold;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    margin: 5% 0 0 25%;
 }
 #chatroom{
     display: none;

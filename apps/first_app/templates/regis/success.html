@@ -10,7 +10,9 @@
   <body>
     <div id = "full-chat-room">
     <div id ="open-chat-room">
-        <p>Chat</p>
+        <div>
+            <p id = "chat-word">Chat Room</p>
+        </div>
     </div>
     <div id="chatroom">
       <div id = "messages"></div>
@@ -20,9 +22,9 @@
               <form action="/message" method="post" id="create_message">
                   {% csrf_token %}
                   {% if self.admin == True %}
-                      <textarea class="input" name="message" cols="30" rows="1">admin~</textarea>
+                  <input type="text" name="message" value="admin~">
                   {% else %}
-                      <textarea class="input" name="message" cols="30" rows="2"></textarea>
+                  <input type="text" name="message" value="">
                   {% endif %}
                   <input type="hidden" name = "user" value ="{{self}}">
                   <input type="submit" vlaue="Submit" >
